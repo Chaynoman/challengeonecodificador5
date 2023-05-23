@@ -25,150 +25,208 @@
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <a href="index.html">Inicio</a>
-            <a href="información.html">Sobre Mi</a>
-            <a href="contacto.html">Contacto</a>
         </nav>
     </div>
 
-    <section class="encriptador">
-        <div class="contenido-encriptador">
-            <h2>Encriptador</h2>
+    <main>
+        <section>
+            <section class="encriptador">
+                <div class="contenido-encriptador">
+                    <h2>Encriptador</h2>
 
-            <div class="campo">
-                <p>Este es un encriptador de texto con el cuál podrás podras enviar tus mensajes de manera segura</p>
-                <label for="mensaje">Mensaje a Encriptar/Desencriptar</label>
-                <input type="text" name="mensaje-a-encriptar" id="texto-a-encriptar" placeholder="Escribe aquí">
-            </div>
+                    <div class="campo">
+                        <p>Este es un encriptador de texto con el cuál podrás enviar tus mensajes de manera segura
+                        </p>
+                        <label class="campo-mensaje" for="mensaje">Mensaje a Encriptar/Desencriptar</label>
+                        <input type="text" name="mensaje-a-encriptar" id="texto-a-encriptar"
+                            placeholder="Escriba su texto aquí">
+                    </div>
 
-        </div>
+                </div>
 
-        <div class="alinear-derecha boton">
-            <input class="botonEncriptar" type="button" id="botonEncriptar" value="Encriptar">
-            <input class="botonDesencriptar" type="button" id="botonDesencriptar" value="Desencriptar">
-            <input class="botonLimpiar" type="button" id="botonLimpiar" value="Limpiar">
-        </div>
+                <div class="alinear-derecha boton">
+                    <input class="botonEncriptar" type="button" id="botonEncriptar" value="Encriptar">
+                    <input class="botonDesencriptar" type="button" id="botonDesencriptar" value="Desencriptar">
+                    <input class="botonLimpiar" type="button" id="botonLimpiar" value="Limpiar">
+                </div>
+            </section>
 
-        <section class="resultado">
+            <section class="resultado">
 
-            <div>
-                <textarea class="resultado-text" type="text" name="mensaje-encriptado" id="mensaje-encriptado"> </textarea>
+                <div class="resultado-mensaje">
+                    <label for="resultado-mensaje">Aquí se encuentra su resultado</label>
 
-            </div>
+                    <textarea class="resultado-text" type="text" name="mensaje-encriptado"
+                        id="mensaje-encriptado" style="float:middle"> </textarea>
 
-            <div class="alinear-derecha">
-                <input class="buton-copiar" type="button" id="botonCopiar" value="Copiar">
-            </div>
+                    <input class="boton-copiar" type="button" id="botonCopiar" value="Copiar">
+                </div>
+
+            </section>
+
+            <script>
+
+                /*Ingresar con Usuario y contraseña
+    
+                var inicioDeSesionRegistrado = "Herman";
+                var contrasenhaRegistrada = "Chicharron23*";
+    
+                var intentos = 3;
+                var contador = 1;
+    
+                while (contador <= intentos) {
+    
+                    var inicioDeSesionIngresado = prompt("Ingrese su usuario");
+                    var contrasenhaIngresada = prompt("Ingrese su contraseña");
+    
+                    if (inicioDeSesionRegistrado == inicioDeSesionIngresado && contrasenhaRegistrada == contrasenhaIngresada) {
+    
+                        alert("Bienvenido al sistema " + inicioDeSesionIngresado);
+                        contador = intentos;
+    
+                    }
+    
+                    else {
+                        if (contador == 3) {
+                            alert("Número de Intentos máximo permitidos, el usuario ha sido bloqueado, favor de llamar al área de Cybersecurity");
+                        }
+                        else {
+                            alert("inicio de sesión inválido. Favor intente de nuevo");
+                        }
+                    }
+    
+                    contador = contador + 1;
+    
+                }*/
+
+
+                /*Encriptar Texto*/
+
+                function cambiarTexto() {
+
+                    var mensaje = document.getElementById('texto-a-encriptar').value.toLowerCase();
+
+
+                    mensaje = mensaje.replace(/[àáâãäå]/g, 'a');
+                    mensaje = mensaje.replace(/[ÈÉÊË]/g, 'E');
+                    mensaje = mensaje.replace(/[èéêë]/g, 'e');
+                    mensaje = mensaje.replace(/[ÌÍÎÏ]/g, 'I');
+                    mensaje = mensaje.replace(/[ìíîï]/g, 'i');
+                    mensaje = mensaje.replace(/[ÒÓÔÕÖ]/g, 'O');
+                    mensaje = mensaje.replace(/[òóôõö]/g, 'o');
+                    mensaje = mensaje.replace(/[ÙÚÛÜ]/g, 'U');
+                    mensaje = mensaje.replace(/[ùúûü]/g, 'u');
+
+
+                    mensaje = mensaje.replace(/e/gim, "enter");
+                    mensaje = mensaje.replace(/i/gim, "imes");
+                    mensaje = mensaje.replace(/a/gim, "ai");
+                    mensaje = mensaje.replace(/o/gim, "ober");
+                    mensaje = mensaje.replace(/u/gim, "ufat");
+
+
+                    mensaje = mensaje.replace(/[&/\#^+()$~%.'":*¿?<>{}0-9"-"_,]/gim, '');
+
+
+                    console.log(mensaje);
+                    console.log("clic en boton encriptar");
+
+
+
+
+                    //document.getElementById('mensaje-encriptado').innerHTML = mensaje;
+                    var area = document.getElementById('mensaje-encriptado');
+                    area.value = mensaje;
+
+                    /* Alerta mensaje nulo*/
+                    if (mensaje == "") {
+
+                        area.value = "Mensaje no Encontrado";
+                        console.log("El string está vacío");
+                    }
+
+                }
+
+
+
+
+
+                var button = document.getElementById("botonEncriptar");
+                button.onclick = cambiarTexto;
+
+
+
+                /* Desencriptar Texto */
+
+                function desencriptarTexto() {
+
+                    var mensaje = document.getElementById('texto-a-encriptar').value.toLowerCase();
+
+
+                    mensaje = mensaje.replace(/enter/gim, "e");
+                    mensaje = mensaje.replace(/imes/gim, "i");
+                    mensaje = mensaje.replace(/ai/gim, "a");
+                    mensaje = mensaje.replace(/ober/gim, "o");
+                    mensaje = mensaje.replace(/ufat/gim, "u");
+
+
+                    mensaje = mensaje.replace(/[&/\#^+()$~%.'":*¿?<>{}0-9"-"_,]/gim, '');
+
+
+                    console.log(mensaje);
+                    console.log("clic en boton desencriptar");
+
+                    //document.getElementById("mensaje-encriptado").innerHTML = mensaje;
+                    var area = document.getElementById('mensaje-encriptado');
+                    area.value = mensaje;
+
+                    /* Alerta mensaje nulo*/
+                    if (mensaje == "") {
+
+                        area.value = "Mensaje no Encontrado";
+                        console.log("El string está vacío");
+                    }
+
+                }
+
+                var button = document.getElementById("botonDesencriptar");
+                button.onclick = desencriptarTexto;
+
+
+
+                /* Copiar Texto */
+
+                function copiar() {
+                    var copiarContenido = document.getElementById("mensaje-encriptado");
+                    copiarContenido.select();
+                    document.execCommand("copy");
+                    alert("Se ha copiado el texto (Encriptado/Desencriptado)");
+                }
+
+                var botonCopiar = document.getElementById("botonCopiar");
+                botonCopiar.onclick = copiar;
+
+
+
+                /* Limpiar Texto */
+
+                var input = document.getElementById("texto-a-encriptar");
+                input.focus(); //pone el indicador inmediatamente en el box de texto
+
+                function limpiar() {
+                    mensaje = document.getElementById("texto-a-encriptar").value = "";
+                    mensaje = document.getElementById("mensaje-encriptado").value = "";
+                    mensaje = mensaje.value = "";
+                    input.focus();
+                }
+
+                var botonLimpiar = document.getElementById("botonLimpiar");
+                botonLimpiar.onclick = limpiar;
+
+            </script>
 
         </section>
-
-        <script>
-
-
-            /*Encriptar Texto*/
-
-            function cambiarTexto() {
-
-                var mensaje = document.getElementById('texto-a-encriptar').value.toLowerCase();
-
-
-                mensaje = mensaje.replace(/[àáâãäå]/g, 'a');
-                mensaje = mensaje.replace(/[ÈÉÊË]/g, 'E');
-                mensaje = mensaje.replace(/[èéêë]/g, 'e');
-                mensaje = mensaje.replace(/[ÌÍÎÏ]/g, 'I');
-                mensaje = mensaje.replace(/[ìíîï]/g, 'i');
-                mensaje = mensaje.replace(/[ÒÓÔÕÖ]/g, 'O');
-                mensaje = mensaje.replace(/[òóôõö]/g, 'o');
-                mensaje = mensaje.replace(/[ÙÚÛÜ]/g, 'U');
-                mensaje = mensaje.replace(/[ùúûü]/g, 'u');
-
-
-                mensaje = mensaje.replace(/e/gim, "enter");
-                mensaje = mensaje.replace(/i/gim, "imes");
-                mensaje = mensaje.replace(/a/gim, "ai");
-                mensaje = mensaje.replace(/o/gim, "ober");
-                mensaje = mensaje.replace(/u/gim, "ufat");
-
-
-                mensaje = mensaje.replace(/[&/\#^+()$~%.'":*¿?<>{}0-9"-"_,]/gim, '');
-
-
-                console.log(mensaje);
-                console.log("clic en boton encriptar");
-
-                //document.getElementById('mensaje-encriptado').innerHTML = mensaje;
-                let area = document.getElementById('mensaje-encriptado');
-                area.value = mensaje;
-
-            }
-
-            var button = document.getElementById("botonEncriptar");
-            button.onclick = cambiarTexto;
-
-
-
-            /* Desencriptar Texto */
-
-            function desencriptarTexto() {
-
-                var mensaje = document.getElementById('texto-a-encriptar').value.toLowerCase();
-
-
-                mensaje = mensaje.replace(/enter/gim, "e");
-                mensaje = mensaje.replace(/imes/gim, "i");
-                mensaje = mensaje.replace(/ai/gim, "a");
-                mensaje = mensaje.replace(/ober/gim, "o");
-                mensaje = mensaje.replace(/ufat/gim, "u");
-
-
-                mensaje = mensaje.replace(/[&/\#^+()$~%.'":*¿?<>{}0-9"-"_,]/gim, '');
-
-
-                console.log(mensaje);
-                console.log("clic en boton desencriptar");
-
-                //document.getElementById("mensaje-encriptado").innerHTML = mensaje;
-                let area = document.getElementById('mensaje-encriptado');
-                area.value = mensaje;
-
-            }
-
-            var button = document.getElementById("botonDesencriptar");
-            button.onclick = desencriptarTexto;
-
-
-            /* Copiar Texto */
-
-            function copiar() {
-                var copiarContenido = document.getElementById("mensaje-encriptado");
-                copiarContenido.select();
-                document.execCommand("copy");
-                alert("Se ha copiado el texto (Encriptado/Desencriptado)");
-            }
-
-            var botonCopiar = document.getElementById("botonCopiar");
-            botonCopiar.onclick = copiar;
-
-
-
-            /* Limpiar Texto */
-
-            var input = document.getElementById("texto-a-encriptar");
-            input.focus(); //pone el indicador inmediatamente en el box de texto
-
-            function limpiar() {
-                mensaje = document.getElementById("texto-a-encriptar").value = "";
-                mensaje = document.getElementById("mensaje-encriptado").value = "";
-                mensaje = mensaje.value = "";
-                input.focus();
-            }
-
-            var botonLimpiar = document.getElementById("botonLimpiar");
-            botonLimpiar.onclick = limpiar;
-
-        </script>
-
-    </section>
-
+    </main>
 
     <footer class="footer">
         <p class="copyright">&copy; Todos los derechos Reservados. Herman Méndez Freelancer</p>

@@ -4,7 +4,7 @@
     --primario: #fcc107;
     --secundario: #0097a7;
     --gris: #757575;
-    --grisClaro: #DFE9F3;
+    --grisClaro: #d8e1eb;
 }
 
 html {
@@ -14,9 +14,11 @@ html {
 }
 
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
-  }
+}
 
 
 
@@ -41,16 +43,14 @@ h3 {
     font-size: 1.8rem;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     text-align: center;
 }
 
 .titulo span {
     font-size: 2rem;
-}
-
-.alinear-derecha {
-    justify-content: flex-end;
 }
 
 
@@ -97,21 +97,51 @@ h1, h2, h3 {
 
 /* Encriptador */
 
-/*.input-text {
-    width: 60%; /** toma todo el tamaño disponible
-    padding: 1.5rem;
-    border-radius: .5rem;
-}*/
+@media (min-width: 768px) {
+    .alinear-derecha {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+
+    }
+}
+
+.encriptador {
+    background-color: #E57C23;
+    background-image: linear-gradient(to top, #E57C23, #E8AA42);
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.campo-mensaje {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    text-align: center;
+    margin-left: 2rem;
+}
 
 .campo input {
+
     height: 7rem;
-    width: 35rem;
+    width: 70%;
     padding: 1rem;
     margin: 1.5rem;
+    border-radius: 1rem;
+}
+
+.campo p {
+
+    font-size: 1.8rem;
+    color: var(--negro);
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    margin: 1.2rem;
 }
 
 .alinear-derecha input {
-    margin: 0 1rem;
+    margin: 1.2rem;
     justify-content: space-evenly;
 }
 
@@ -122,57 +152,118 @@ h1, h2, h3 {
 .botonEncriptar {
     background-color: rgb(18, 18, 143);
     color: white;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     border-radius: 1rem;
     font-size: 2rem;
     text-decoration: none;
     text-align: center;
     border: none;
+    transition: 0.2s all;
+}
+
+.botonEncriptar:hover {
+    background-color: white;
+    color: rgb(18, 18, 143);
 }
 
 .botonDesencriptar {
-    background-color: var(--gris);
+    background-color: var(--grisClaro);
     color: rgb(18, 18, 143);
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     border-radius: 1rem;
     font-size: 2rem;
     text-decoration: none;
     text-align: center;
     border-color: rgb(18, 18, 143);
     border-width: 0.2rem;
+    transition: 0.2s all;
+}
+
+.botonDesencriptar:hover {
+    background-color: rgb(18, 18, 143);
+    color: var(--grisClaro);
 }
 
 .botonLimpiar {
     background-color: var(--blanco);
     color: var(--negro);
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     border-radius: 1rem;
     font-size: 2rem;
     text-decoration: none;
     text-align: center;
     border-color: var(--negro);
     border-width: 0.2rem;
+    transition: 0.2s all;
+}
+
+.botonLimpiar:hover {
+    background-color: var(--negro);
+    color: var(--blanco);
 }
 
 
 
 
 /* Resultado */
-
 .resultado {
+    background-color: #E57C23;
+    background-image: linear-gradient( #E57C23 , #E8AA42 );
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    height: 25rem;
 }
 
+@media (min-width: 768px) {
+    .resultado {
+        justify-content: space-evenly;
+        flex-direction: row;
+
+    }
+}
+
+
+.resultado-mensaje {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
+
+
 .resultado-text {
-
-    height: 15rem;
+    margin: 1.5rem;
+    height: 14rem;
     width: 35rem;
-
+    vertical-align: middle;
+    border-radius: 1rem;
 }
 
 .boton-copiar {
-
+    background-color: var(--grisClaro);
+    color: rgb(18, 18, 143);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-align: center;
+    border-color: rgb(18, 18, 143);
+    border-width: 0.2rem;
+    margin: 1rem;
+    transition: 0.2s all;
 }
 
+.boton-copiar:hover {
+    background-color: rgb(18, 18, 143);
+    color: var(--grisClaro);
+}
 
+.footer {
+    padding: 2rem;
+    background-color: var(--secundario);
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    
+}
