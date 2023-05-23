@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador 2023</title>
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<input type="text" name="mensaje-a-encriptar" id="texto-a-encriptar" cols="30">
+<!-- <textarea name="mensaje-a-encriptar" id="texto-a-encriptar" cols="30" rows="10"></textarea> -->
+
+<textarea name="mensaje-encriptado" id="mensaje-encriptado" cols="30" rows="10"></textarea>
+
+<input type="button" id="botonEncriptar" value="Encriptar">
+
+<input type="button" id="botonDesencriptar" value="Desencriptar">
+
+<input type="button" id="botonCopiar" value="Copiar">
+
+<input type="button" id="botonLimpiar" value="Limpiar">
+
+
+<script>
+
+    /*Encriptar Texto*/
+
+    function cambiarTexto() {
+
+        var mensaje = document.getElementById('texto-a-encriptar').value.toLowerCase();
+
+
+        mensaje = mensaje.replace(/[àáâãäå]/g, 'a');
+        mensaje = mensaje.replace(/[ÈÉÊË]/g, 'E');
+        mensaje = mensaje.replace(/[èéêë]/g, 'e');
+        mensaje = mensaje.replace(/[ÌÍÎÏ]/g, 'I');
+        mensaje = mensaje.replace(/[ìíîï]/g, 'i');
+        mensaje = mensaje.replace(/[ÒÓÔÕÖ]/g, 'O');
+        mensaje = mensaje.replace(/[òóôõö]/g, 'o');
+        mensaje = mensaje.replace(/[ÙÚÛÜ]/g, 'U');
+        mensaje = mensaje.replace(/[ùúûü]/g, 'u');
+
+
+        mensaje = mensaje.replace(/e/gim, "enter");
+        mensaje = mensaje.replace(/i/gim, "imes");
+        mensaje = mensaje.replace(/a/gim, "ai");
+        mensaje = mensaje.replace(/o/gim, "ober");
+        mensaje = mensaje.replace(/u/gim, "ufat");
+
+
+        mensaje = mensaje.replace(/[&/\#^+()$~%.'":*¿?<>{}0-9"-"_,]/gim, '');
+
+
+        console.log(mensaje);
+        console.log("clic en boton encriptar");
+
+        //document.getElementById('mensaje-encriptado').innerHTML = mensaje;
+        let area = document.getElementById('mensaje-encriptado'); 
+        area.value = mensaje;
+
+    }
+
+    var button = document.getElementById("botonEncriptar");
+    button.onclick = cambiarTexto;
+
+
+
+    /* Desencriptar Texto */
+
+    function desencriptarTexto() {
+
+        var mensaje = document.getElementById('texto-a-encriptar').value.toLowerCase();
+
+
+        mensaje = mensaje.replace(/enter/gim, "e");
+        mensaje = mensaje.replace(/imes/gim, "i");
+        mensaje = mensaje.replace(/ai/gim, "a");
+        mensaje = mensaje.replace(/ober/gim, "o");
+        mensaje = mensaje.replace(/ufat/gim, "u");
+
+
+        mensaje = mensaje.replace(/[&/\#^+()$~%.'":*¿?<>{}0-9"-"_,]/gim, '');
+
+
+        console.log(mensaje);
+        console.log("clic en boton desencriptar");
+
+        //document.getElementById("mensaje-encriptado").innerHTML = mensaje;
+        let area = document.getElementById('mensaje-encriptado'); 
+        area.value = mensaje;
+
+    }
+
+    var button = document.getElementById("botonDesencriptar");
+    button.onclick = desencriptarTexto;
+
+
+    /* Copiar Texto */
+
+    function copiar() {
+        var copiarContenido = document.getElementById("mensaje-encriptado");
+        copiarContenido.select();
+        document.execCommand("copy");
+        alert("Se ha copiado el texto (Encriptado/Desencriptado)");
+    }
+
+    var botonCopiar = document.getElementById("botonCopiar");
+    botonCopiar.onclick = copiar;
+
+
+
+    /* Limpiar Texto */
+
+    var input = document.getElementById("texto-a-encriptar");
+    input.focus(); //pone el indicador inmediatamente en el box de texto
+
+    function limpiar() {
+        mensaje = document.getElementById("texto-a-encriptar").value = "";
+        mensaje = document.getElementById("mensaje-encriptado").value = "";
+        mensaje = mensaje.value = "";
+        input.focus();
+    }
+
+    var botonLimpiar = document.getElementById("botonLimpiar");
+    botonLimpiar.onclick = limpiar;
+
+
+
+</script>

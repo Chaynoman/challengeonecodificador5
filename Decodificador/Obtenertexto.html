@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+ 		<title> Learning JavaScript Get Textbox Value</title>
+ 	 </head>
+	 <body>
+    	Full Name: <input type="text" id="fullName" name="fullName" value="Mehvish Ashiq">
+ 		<button type="button" onclick="nameFunction()">Submit</button>
+ 		<p id="displayName"></p>
+     </body>
+
+<script>
+
+function nameFunction(){
+ 	var element = document.getElementById("fullName").value;
+ 	document.getElementById("displayName").innerHTML = element;
+}
+</script>
+	 
+</html>
